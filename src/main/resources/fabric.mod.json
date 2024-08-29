@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "lprm",
+  "version": "${version}",
+  "name": "lprm",
+  "description": "making luckperms ranks easily asf",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/lprm/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "pl.olafcio.lprm.client.MainClient"
+    ],
+    "main": [
+      "pl.olafcio.lprm.Main"
+    ]
+  },
+  "mixins": [
+    "lprm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

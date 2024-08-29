@@ -8,10 +8,7 @@ package pl.olafcio.lprm;
 import org.jetbrains.annotations.NotNull;
 
 public final class GradientUtil {
-    public GradientUtil() {
-    }
-
-    public static @NotNull String generateMessage(@NotNull String head, @NotNull String tail, @NotNull String message) {
+    public static @NotNull String generateMessage(@NotNull String head, @NotNull String tail, @NotNull String message, @NotNull String formatCodes) {
         if (message.isEmpty()) {
             return message;
         } else {
@@ -23,7 +20,7 @@ public final class GradientUtil {
 
             for (char c : charlist) {
                 int[] values = generatePercentageRGB(hex, current / 100.0);
-                builder.append("&#").append(String.format("%02X%02X%02X", values[0], values[1], values[2])).append(c);
+                builder.append("&#").append(String.format("%02X%02X%02X", values[0], values[1], values[2])).append(c).append(formatCodes);
                 current = Math.min(100.0, current + perChar);
             }
 

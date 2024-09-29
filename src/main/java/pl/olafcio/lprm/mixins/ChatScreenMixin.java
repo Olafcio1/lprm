@@ -62,7 +62,7 @@ public class ChatScreenMixin {
                     })).start();
                 }
                 case "create" -> {
-                    if (args.size() < 4) {
+                    if (args.size() < 3) {
                         Main.mc.player.sendMessage(Text.of("§6[LPRM]§7 Usage: §lcreate {format codes + rank name} [gradient color1 hex] [gradient color2 hex] [format codes]"));
                         return;
                     }
@@ -93,8 +93,7 @@ public class ChatScreenMixin {
                             Main.mc.player.networkHandler.sendCommand("lp group " + id + " meta setprefix 90 \"" + finalGradient + "&7 »&r \"");
                             Thread.sleep(500L);
                             Main.mc.player.sendMessage(Text.of("§6[LPRM]§7 Rank created. It has been given the ID: §l" + id));
-                        } catch (InterruptedException var3) {
-                            InterruptedException e = var3;
+                        } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
                     })).start();
@@ -105,10 +104,12 @@ public class ChatScreenMixin {
                         return;
                     }
 
-                    var var10000 = Main.mc.player.networkHandler;
-                    String var10001 = args.get(0);
-                    var10000.sendCommand("lp user " + var10001 + " parent set " + args.get(1));
-                    Main.mc.player.sendMessage(Text.of("Rank granted."));
+                    var plr = args.get(0);
+                    Main.mc.player.networkHandler.sendCommand("lp user " + plr + " parent set " + args.get(1));
+                    Main.mc.player.sendMessage(Text.of("§6[LPRM]§7 Rank granted."));
+                }
+                case "help" -> {
+                    Main.mc.player.sendMessage(Text.of("§6[LPRM]§7 Available commands:\n§6[LPRM]§7 :create - used to create a rank\n§6[LPRM]§7 :idcreate - used to create a rank with a specific ID\n§6[LPRM]§7 :grant - used to grant a rank to player"));
                 }
                 case null, default ->
                         Main.mc.player.sendMessage(Text.of("§6[LPRM]§7 Unknown command. To see all commands, run §l:help§7."));

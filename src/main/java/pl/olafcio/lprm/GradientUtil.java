@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package pl.olafcio.lprm;
 
 import org.jetbrains.annotations.NotNull;
